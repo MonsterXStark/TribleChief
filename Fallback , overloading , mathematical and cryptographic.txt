@@ -1,0 +1,97 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+ contract FallBackFunction {
+ // fallback declaration as external always its declared with out name, parameter and does not
+return any value.
+ string public call;
+ fallback() external payable {
+ call = "I am a fallback function!";
+ }
+ function getBalance() public view returns (uint) {
+ return address(this).balance;
+ }
+}
+
+
+
+
+//Creating the sender contract
+contract Sender
+{
+ function transferEther() public payable
+ {
+ require (msg.value>=2 ether,"Insufficient Ether Sent");
+ (bool sent,) = payable (0xf8e81D47203A594245E36C48e151709F0C19fBe8).call{value: 1
+ether}("Transaction completed!");
+ require(sent, "Transaction failed!");
+ }
+ function getBalance() public view returns(uint){
+ return address(this).balance;
+ }
+}
+
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+contract Test
+{
+    function getsum(uint x, uint y) public pure returns  (uint){
+        return x+y;
+
+    }
+    function getsum(uint x, uint y, uint z) public pure returns (uint){
+        return x+y+z;
+    }
+
+    function callTwo() public pure returns (uint){
+        return getsum(2,8);
+    }
+
+    function callthree() public pure returns (uint){
+        return getsum(2,8,20);
+    }
+
+}
+
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+contract PrimeNumber {
+    function isPrime(uint256 n) public pure returns (string memory) {     
+        for (uint256 i = 2; i < n; i++) {
+            if (n % i == 0) {  
+                return "Not a prime";
+            }
+        }   
+        return "prime";
+    }
+}
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract CryptographicFunctions {
+
+    function sha256Hash(string memory _input) public pure returns (bytes32) {
+        return keccak256(abi.encodePacked(_input));
+    }

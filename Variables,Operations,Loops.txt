@@ -1,0 +1,90 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+
+contract Variables {
+    int256 public signNum;
+    bool public isTrue;
+    address public walletAddress;
+    uint256[3] public fixArray;
+    string public message;
+    enum STATUS { pending, approved } // return index of enums instead of actual value, starting from 0.
+    STATUS public currentStatus;
+
+
+    constructor() {
+        signNum = -45;
+        isTrue = true;
+        walletAddress = msg.sender; // wallet address
+        fixArray = [1, 2, 3];
+        currentStatus = STATUS.pending; // return index of emum
+        message = "Initial message!";
+    }
+
+
+    function updateVariables() public {
+        signNum = -20;
+        isTrue = false;
+        walletAddress = msg.sender; // wallet address
+        fixArray[2] = 4; // update value of 3rd element in an array
+        currentStatus = STATUS.approved; // return index of emum
+        message = "Updated message!";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+
+contract Maths {
+    uint256 public num1;
+    uint256 public num2;
+    uint256 public result;
+
+
+    function setNumber(uint256 _num1, uint256 _num2) public {
+        num1 = _num1;
+        num2 = _num2;
+    }
+
+
+    function add() public returns (uint256)  {
+        result = num1 + num2;
+        return result;
+    }
+
+
+    function divide() public returns (uint256)  {
+        require(num2 != 0, "Oops! Can't divide a number by 0.");
+        result = num1 / num2;
+        return result;
+    }
+}
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract WhileLoopExample {
+    uint256 public counter;
+    function increment (uint256 _iterations) public {
+        uint256 i = 0;
+        while (i < _iterations) {
+            counter++;
+            i++;
+        }
+    }
+}

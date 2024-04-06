@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Function {
+    uint256 public number;
+
+    function setNumber(uint256 _newNumber) public {
+        number = _newNumber;
+    }
+
+    function doubleNumber() public {
+        number *= 2;
+    }
+}
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+contract HashContract {
+    bytes32 private message;
+    function hash1(string memory _msg) public {
+        message = keccak256(bytes(_msg));
+    }
+    function getMsg() public view returns (bytes32){
+        return message;
+    }
+}
+
+
+
+
+
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+contract Sol{
+    function testAddMod() public pure returns (uint) {
+        return addmod(4,5,3);
+    }
+    function testMulMod() public pure returns (uint) {
+        return mulmod(4,5,3);
+    }
+
+}
